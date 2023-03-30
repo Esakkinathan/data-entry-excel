@@ -360,13 +360,6 @@ def signup_open(o):
 	otbn=Button(signwin,text="click here to verify your account ",cursor="dot",fg="#3366CC",bg="#121212",activebackground="#121212",activeforeground="#3366CC",relief=FLAT,font=("Courier",13),command= lambda :open_otp(em.get(),ps.get(),un.get(),pn.get(),dt.get(),qft.get(),gen.get(),ar.get()))
 	otbn.place(x=130,y=500)
 
-	#e1.bind('Tab',mov1)
-	#e2.bind('Tab',mov2)
-	#e3.bind('Tab',mov3)
-	#e4.bind('Tab',mov4)
-	#e5.bind('Tab',mov5)
-
-
 	def back_log():
 		signwin.destroy()
 		logwin.deiconify()
@@ -392,7 +385,6 @@ def signup_open(o):
 
 def open_otp(*datas):
 	if(not verify_data(datas)):
-		#mb.showerror("CRUD-OPERATION","Enter values in all the field")
 		pass
 	else:
 		if(check_internet()):
@@ -431,7 +423,6 @@ logwin.title("Login-form")
 logwin.geometry("500x400")
 logwin.configure(bg="#121212")
 logwin.resizable(False,False)
-#logwin.call('tk','scaling',2.0)
 Label(logwin,text="Enter mail id:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=80)
 Label(logwin,text="Enter password:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=130)
 
@@ -444,8 +435,6 @@ ement=Entry(logwin,textvariable=em,width=25,fg="#c0c0c0",bd=3,bg="#121212")
 ement.place(x=280,y=83)
 pwd=Entry(logwin,textvariable=ps,width=25,fg="#c0c0c0",bd=3,bg="#121212",show="*")
 pwd.place(x=280,y=130)
-#em.set("esakki")
-#ps.set("nathan")
 
 def clear_txt():
 	em.set("")
