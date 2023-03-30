@@ -6,3 +6,10 @@ Excel book is used to store data and for that I used openpyxl module.
 Since its a login page,there is need to be a verification,I've included otp-verifiction for email address
 So you can create,update,delete your profile
 Thank you
+modules required:
+1)tkinter
+2)tkcalendar
+3)smtp
+4)openpyxl
+5)random
+6)email
