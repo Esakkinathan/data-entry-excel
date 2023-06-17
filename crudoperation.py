@@ -446,8 +446,6 @@ ement=Entry(logwin,textvariable=em,width=25,fg="#c0c0c0",bd=3,bg="#121212",inser
 ement.place(x=280,y=83)
 pwd=Entry(logwin,textvariable=ps,width=25,fg="#c0c0c0",bd=3,bg="#121212",show="*",insertbackground="white")
 pwd.place(x=280,y=130)
-#em.set("esakki")
-#ps.set("nathan")
 
 def clear_txt():
 	em.set("")
