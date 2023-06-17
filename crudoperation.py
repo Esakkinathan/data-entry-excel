@@ -53,7 +53,6 @@ def send_otp(datas):
 	message["Subject"]="OTP-Verification"
 	message["From"]=mymail
 	message["To"]=usermail
-
 	text=f"""
 	Hi there,
 	Its\' nice to see you are using my code\n
@@ -161,14 +160,14 @@ def update_window(data,row):
 				upb.destroy()
 				upl=Label(upwin,text="Enter "+val+":",fg="#c0c0c0",bg="#121212",font=("Courier",15))
 				upl.place(x=70,y=190)
-				upe=Entry(upwin,textvariable=upval,width=25,fg="#c0c0c0",bd=3,bg="#121212")
+				upe=Entry(upwin,textvariable=upval,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
 				upe.place(x=320,y=190)
 				upb=Button(upwin,text="click",fg="#c0c0c0",bg="#2c3e50",cursor="dot",relief=FLAT,font=("Courier",13),command=lambda : update_value(upval.get(),dicval[val]))
 				upb.place(x=250,y=250)
 			else:
 				upl=Label(upwin,text="Enter "+val+":",fg="#c0c0c0",bg="#121212",font=("Courier",15))
 				upl.place(x=70,y=190)
-				upe=Entry(upwin,textvariable=upval,width=25,fg="#c0c0c0",bd=3,bg="#121212")
+				upe=Entry(upwin,textvariable=upval,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
 				upe.place(x=320,y=190)
 				upb=Button(upwin,text="click",fg="#c0c0c0",bg="#2c3e50",cursor="dot",activebackground="#121212",activeforeground="#c0c0c0",relief=FLAT,font=("Courier",13),command=lambda : update_value(upval.get(),dicval[val]))
 				upb.place(x=250,y=250)
@@ -269,12 +268,15 @@ def verify_data(data):
 
 
 def load_data(*data):
+	verify_data(data)
 	wb=load_workbook("book.xlsx")
 	ws=wb.active
 	em=ws['A']
 	ws.append(data)
 	wb.save("book.xlsx")
+	sing.config(state=DISABLED)
 	mb.showinfo("Info","Your data has been stored\n Go back to login page")
+
 
 
 def signup_open(o):
@@ -309,9 +311,9 @@ def signup_open(o):
 	ar=StringVar()
 
 
-	e1=Entry(signwin,textvariable=em,width=25,fg="#c0c0c0",bd=3,bg="#121212")
+	e1=Entry(signwin,textvariable=em,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
 	e1.place(x=370,y=65)
-	e2=Entry(signwin,textvariable=ps,width=25,fg="#c0c0c0",bd=3,bg="#121212",show="*")
+	e2=Entry(signwin,textvariable=ps,width=25,fg="#c0c0c0",bd=3,bg="#121212",show="*",insertbackground="white")
 	e2.place(x=370,y=115)
 	
 	def pwd_show():
@@ -327,9 +329,9 @@ def signup_open(o):
 	checkb.place(x=530,y=115)
 
 
-	e3=Entry(signwin,textvariable=un,width=25,fg="#c0c0c0",bd=3,bg="#121212")
+	e3=Entry(signwin,textvariable=un,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
 	e3.place(x=370,y=165)
-	e4=Entry(signwin,textvariable=pn,width=25,fg="#c0c0c0",bd=3,bg="#121212")
+	e4=Entry(signwin,textvariable=pn,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
 	e4.place(x=370,y=215)
 	
 
@@ -346,10 +348,10 @@ def signup_open(o):
 	cbox.place(x=370,y=315)
 	cbox.current()
 	
-	Radiobutton(signwin,text="Male",relief=FLAT,activebackground="#121212",activeforeground="#c0c0c0",variable=gen,value="Male",bg="#121212",fg="#c0c0c0").place(x=370,y=365)
-	Radiobutton(signwin,text="Female",relief=FLAT,activebackground="#121212",activeforeground="#c0c0c0",variable=gen,value="Female",bg="#121212",fg="#c0c0c0").place(x=430,y=365)
+	Radiobutton(signwin,text="Male",relief=FLAT,activebackground="#121212",activeforeground="#c0c0c0",variable=gen,value="Male",bg="#121212",fg="#c0c0c0",selectcolor="black").place(x=370,y=365)
+	Radiobutton(signwin,text="Female",relief=FLAT,activebackground="#121212",activeforeground="#c0c0c0",variable=gen,value="Female",bg="#121212",fg="#c0c0c0",selectcolor='black').place(x=430,y=365)
 	
-	e5=Entry(signwin,textvariable=ar,width=25,fg="#c0c0c0",bd=3,bg="#121212")
+	e5=Entry(signwin,textvariable=ar,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
 	e5.place(x=370,y=415)
 	
 	Button(signwin,text="<back",fg="#c0c0c0",bg="#2c3e50",cursor="dot",activebackground="#121212",activeforeground="#c0c0c0",relief=FLAT,font=("Courier",13),command= lambda : back_log()).place(x=125,y=470)
@@ -359,6 +361,13 @@ def signup_open(o):
 	sing.place(x=360,y=470)
 	otbn=Button(signwin,text="click here to verify your account ",cursor="dot",fg="#3366CC",bg="#121212",activebackground="#121212",activeforeground="#3366CC",relief=FLAT,font=("Courier",13),command= lambda :open_otp(em.get(),ps.get(),un.get(),pn.get(),dt.get(),qft.get(),gen.get(),ar.get()))
 	otbn.place(x=130,y=500)
+
+	#e1.bind('Tab',mov1)
+	#e2.bind('Tab',mov2)
+	#e3.bind('Tab',mov3)
+	#e4.bind('Tab',mov4)
+	#e5.bind('Tab',mov5)
+
 
 	def back_log():
 		signwin.destroy()
@@ -385,6 +394,7 @@ def signup_open(o):
 
 def open_otp(*datas):
 	if(not verify_data(datas)):
+		#mb.showerror("CRUD-OPERATION","Enter values in all the field")
 		pass
 	else:
 		if(check_internet()):
@@ -423,6 +433,7 @@ logwin.title("Login-form")
 logwin.geometry("500x400")
 logwin.configure(bg="#121212")
 logwin.resizable(False,False)
+#logwin.call('tk','scaling',2.0)
 Label(logwin,text="Enter mail id:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=80)
 Label(logwin,text="Enter password:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=130)
 
@@ -431,10 +442,12 @@ em=StringVar()
 ps=StringVar()
 
 
-ement=Entry(logwin,textvariable=em,width=25,fg="#c0c0c0",bd=3,bg="#121212")
+ement=Entry(logwin,textvariable=em,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
 ement.place(x=280,y=83)
-pwd=Entry(logwin,textvariable=ps,width=25,fg="#c0c0c0",bd=3,bg="#121212",show="*")
+pwd=Entry(logwin,textvariable=ps,width=25,fg="#c0c0c0",bd=3,bg="#121212",show="*",insertbackground="white")
 pwd.place(x=280,y=130)
+#em.set("esakki")
+#ps.set("nathan")
 
 def clear_txt():
 	em.set("")
