@@ -124,18 +124,18 @@ def update_window(data,row):
 	upwin=Toplevel()
 	upwin.geometry("600x400")
 	upwin.title("Update")
-	upwin.configure(bg="#121212")
+	upwin.configure(bg="black")
 		
 
-	Label(upwin,text="Select what is to be update:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=50,y=65)
+	Label(upwin,text="Select what is to be update:",fg="white",bg="black",font=("Courier",15)).place(x=50,y=65)
 	upch=StringVar()
 	cb1=ttk.Combobox(upwin,textvariable=upch,width=10,values=headers)
 	cb1.place(x=400,y=69)
 	cb1.current()
 	global labfound
 	labfound=False
-	Button(upwin,text="click",fg="#c0c0c0",bg="#2c3e50",cursor="dot",relief=FLAT,font=("Courier",13),command= lambda  : show_entry()).place(x=250,y=120)
-	Button(upwin,text="<back",fg="#c0c0c0",bg="#2c3e50",cursor="dot",relief=FLAT,font=("Courier",13),command= lambda  : back_info()).place(x=250,y=340)
+	Button(upwin,text="click",fg="white",bg="#2c3e50",cursor="dot",relief=FLAT,font=("Courier",13),command= lambda  : show_entry()).place(x=250,y=120)
+	Button(upwin,text="<back",fg="white",bg="#2c3e50",cursor="dot",relief=FLAT,font=("Courier",13),command= lambda  : back_info()).place(x=250,y=340)
 	
 
 	def back_info():
@@ -158,18 +158,18 @@ def update_window(data,row):
 				upl.destroy()
 				upe.destroy()
 				upb.destroy()
-				upl=Label(upwin,text="Enter "+val+":",fg="#c0c0c0",bg="#121212",font=("Courier",15))
+				upl=Label(upwin,text="Enter "+val+":",fg="white",bg="black",font=("Courier",15))
 				upl.place(x=70,y=190)
-				upe=Entry(upwin,textvariable=upval,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
+				upe=Entry(upwin,textvariable=upval,width=25,fg="white",bd=3,bg="black",insertbackground="white")
 				upe.place(x=320,y=190)
-				upb=Button(upwin,text="click",fg="#c0c0c0",bg="#2c3e50",cursor="dot",relief=FLAT,font=("Courier",13),command=lambda : update_value(upval.get(),dicval[val]))
+				upb=Button(upwin,text="click",fg="white",bg="#2c3e50",cursor="dot",relief=FLAT,font=("Courier",13),command=lambda : update_value(upval.get(),dicval[val]))
 				upb.place(x=250,y=250)
 			else:
-				upl=Label(upwin,text="Enter "+val+":",fg="#c0c0c0",bg="#121212",font=("Courier",15))
+				upl=Label(upwin,text="Enter "+val+":",fg="white",bg="black",font=("Courier",15))
 				upl.place(x=70,y=190)
-				upe=Entry(upwin,textvariable=upval,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
+				upe=Entry(upwin,textvariable=upval,width=25,fg="white",bd=3,bg="black",insertbackground="white")
 				upe.place(x=320,y=190)
-				upb=Button(upwin,text="click",fg="#c0c0c0",bg="#2c3e50",cursor="dot",activebackground="#121212",activeforeground="#c0c0c0",relief=FLAT,font=("Courier",13),command=lambda : update_value(upval.get(),dicval[val]))
+				upb=Button(upwin,text="click",fg="white",bg="#2c3e50",cursor="dot",activebackground="black",activeforeground="white",relief=FLAT,font=("Courier",13),command=lambda : update_value(upval.get(),dicval[val]))
 				upb.place(x=250,y=250)
 			labfound=True
 		else:
@@ -183,11 +183,11 @@ def open_window(data,val):
 	rwin=Toplevel()
 	rwin.title("Details")
 	rwin.geometry("600x570")
-	rwin.configure(bg="#121212")
+	rwin.configure(bg="black")
 	
 
-	menubar=Menu(rwin,bg="#121212",fg="#c0c0c0",bd="3",font=("Courier",15))
-	opt=Menu(menubar,bg="#121212",fg="#c0c0c0",bd="3",font=("Courier",15),tearoff=0)
+	menubar=Menu(rwin,bg="black",fg="white",bd="3",font=("Courier",15))
+	opt=Menu(menubar,bg="black",fg="white",bd="3",font=("Courier",15),tearoff=0)
 	menubar.add_cascade(label="Options",menu=opt)
 	opt.add_command(label="Update",command=lambda:update_window(data,val))
 	opt.add_command(label="Delete",command=lambda:delete_profile(val))
@@ -201,25 +201,25 @@ def open_window(data,val):
 		
 		#info labels
 	Label(rwin,text="Informations",fg="black",bg="aqua",font=("Ink free",25,"bold")).pack(padx=5,pady=10)
-	Label(rwin,text="Name:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=100,y=100)
-	Label(rwin,text="Mail id:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=100,y=150)
-	Label(rwin,text="Mobile Number:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=100,y=200)
-	Label(rwin,text="date Of Birth",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=100,y=250)
-	Label(rwin,text="Qualification:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=100,y=300)
-	Label(rwin,text="Gender:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=100,y=350)
-	Label(rwin,text="Area:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=100,y=400)
+	Label(rwin,text="Name:",fg="white",bg="black",font=("Courier",15)).place(x=100,y=100)
+	Label(rwin,text="Mail id:",fg="white",bg="black",font=("Courier",15)).place(x=100,y=150)
+	Label(rwin,text="Mobile Number:",fg="white",bg="black",font=("Courier",15)).place(x=100,y=200)
+	Label(rwin,text="date Of Birth",fg="white",bg="black",font=("Courier",15)).place(x=100,y=250)
+	Label(rwin,text="Qualification:",fg="white",bg="black",font=("Courier",15)).place(x=100,y=300)
+	Label(rwin,text="Gender:",fg="white",bg="black",font=("Courier",15)).place(x=100,y=350)
+	Label(rwin,text="Area:",fg="white",bg="black",font=("Courier",15)).place(x=100,y=400)
 		
 
 	#values from data
-	Label(rwin,text=data[0].value,fg="gold",bg="#121212",font=("Courier",15)).place(x=300,y=100)
-	Label(rwin,text=data[2].value,fg="gold",bg="#121212",font=("Courier",15)).place(x=300,y=150)
-	Label(rwin,text=data[3].value,fg="gold",bg="#121212",font=("Courier",15)).place(x=300,y=200)
-	Label(rwin,text=data[4].value,fg="gold",bg="#121212",font=("Courier",15)).place(x=300,y=250)
-	Label(rwin,text=data[5].value,fg="gold",bg="#121212",font=("Courier",15)).place(x=300,y=300)
-	Label(rwin,text=data[6].value,fg="gold",bg="#121212",font=("Courier",15)).place(x=300,y=350)
-	Label(rwin,text=data[7].value,fg="gold",bg="#121212",font=("Courier",15)).place(x=300,y=400)
+	Label(rwin,text=data[0].value,fg="gold",bg="black",font=("Courier",15)).place(x=300,y=100)
+	Label(rwin,text=data[2].value,fg="gold",bg="black",font=("Courier",15)).place(x=300,y=150)
+	Label(rwin,text=data[3].value,fg="gold",bg="black",font=("Courier",15)).place(x=300,y=200)
+	Label(rwin,text=data[4].value,fg="gold",bg="black",font=("Courier",15)).place(x=300,y=250)
+	Label(rwin,text=data[5].value,fg="gold",bg="black",font=("Courier",15)).place(x=300,y=300)
+	Label(rwin,text=data[6].value,fg="gold",bg="black",font=("Courier",15)).place(x=300,y=350)
+	Label(rwin,text=data[7].value,fg="gold",bg="black",font=("Courier",15)).place(x=300,y=400)
 		
-	Button(rwin,text="<back",fg="#c0c0c0",bg="#2c3e50",cursor="dot",activebackground="#121212",activeforeground="#c0c0c0",relief=FLAT,font=("Courier",13),command= lambda : back_main()).place(x=280,y=450)
+	Button(rwin,text="<back",fg="white",bg="#2c3e50",cursor="dot",activebackground="black",activeforeground="white",relief=FLAT,font=("Courier",13),command= lambda : back_main()).place(x=280,y=450)
 
 
 def ps_check(em,pw):
@@ -289,16 +289,16 @@ def signup_open(o):
 	signwin=Toplevel()
 	signwin.title("Sign_up-form")
 	signwin.geometry("630x550")
-	signwin.configure(bg="#121212")
-	Label(signwin,text="Fill The Form",fg="#121212",bg="#1954a2",font=("MV Boli",25,"underline")).pack(padx=5,pady=10)
-	Label(signwin,text="Enter mail id:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=65)
-	Label(signwin,text="Enter password:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=115)
-	Label(signwin,text="Enter username:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=165)
-	Label(signwin,text="Enter Phone number:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=215)
-	Label(signwin,text="Select Date Of Birth:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=265)
-	Label(signwin,text="Select Qualification:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=315)
-	Label(signwin,text="Select Gender:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=365)
-	Label(signwin,text="Enter Area:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=415)
+	signwin.configure(bg="black")
+	Label(signwin,text="Fill The Form",fg="black",bg="#1954a2",font=("MV Boli",25,"underline")).pack(padx=5,pady=10)
+	Label(signwin,text="Enter mail id:",fg="white",bg="black",font=("Courier",15)).place(x=90,y=65)
+	Label(signwin,text="Enter password:",fg="white",bg="black",font=("Courier",15)).place(x=90,y=115)
+	Label(signwin,text="Enter username:",fg="white",bg="black",font=("Courier",15)).place(x=90,y=165)
+	Label(signwin,text="Enter Phone number:",fg="white",bg="black",font=("Courier",15)).place(x=90,y=215)
+	Label(signwin,text="Select Date Of Birth:",fg="white",bg="black",font=("Courier",15)).place(x=90,y=265)
+	Label(signwin,text="Select Qualification:",fg="white",bg="black",font=("Courier",15)).place(x=90,y=315)
+	Label(signwin,text="Select Gender:",fg="white",bg="black",font=("Courier",15)).place(x=90,y=365)
+	Label(signwin,text="Enter Area:",fg="white",bg="black",font=("Courier",15)).place(x=90,y=415)
 	
 	#variables
 	em=StringVar()
@@ -311,9 +311,9 @@ def signup_open(o):
 	ar=StringVar()
 
 
-	e1=Entry(signwin,textvariable=em,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
+	e1=Entry(signwin,textvariable=em,width=25,fg="white",bd=3,bg="black",insertbackground="white")
 	e1.place(x=370,y=65)
-	e2=Entry(signwin,textvariable=ps,width=25,fg="#c0c0c0",bd=3,bg="#121212",show="*",insertbackground="white")
+	e2=Entry(signwin,textvariable=ps,width=25,fg="white",bd=3,bg="black",show="*",insertbackground="white")
 	e2.place(x=370,y=115)
 	
 	def pwd_show():
@@ -325,41 +325,41 @@ def signup_open(o):
 
 	spval=IntVar(value=0)
 	checkb= Checkbutton(signwin,text='Show',variable=spval,
-		onvalue=1,offvalue=0,fg="#b7c7d7",bg="#121212",font=("Courier",10),command=pwd_show)
+		onvalue=1,offvalue=0,fg="#b7c7d7",bg="black",font=("Courier",10),command=pwd_show)
 	checkb.place(x=530,y=115)
 
 
-	e3=Entry(signwin,textvariable=un,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
+	e3=Entry(signwin,textvariable=un,width=25,fg="white",bd=3,bg="black",insertbackground="white")
 	e3.place(x=370,y=165)
-	e4=Entry(signwin,textvariable=pn,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
+	e4=Entry(signwin,textvariable=pn,width=25,fg="white",bd=3,bg="black",insertbackground="white")
 	e4.place(x=370,y=215)
 	
 
-	clbt=Button(signwin,text="click",fg="#c0c0c0",bg="#2c3e50",cursor="dot",activebackground="#121212",activeforeground="#c0c0c0",relief=FLAT,font=("Courier",10),command= lambda : open_cal())
+	clbt=Button(signwin,text="click",fg="white",bg="#2c3e50",cursor="dot",activebackground="black",activeforeground="white",relief=FLAT,font=("Courier",10),command= lambda : open_cal())
 	clbt.place(x=370,y=265)
 	
 
 	sty=ttk.Style()
 	sty.theme_use("clam")
-	sty.configure("TCombobox",fieldbackgound="#2c3e50",bg="#121212",fg="#c0c0c0")
+	sty.configure("TCombobox",fieldbackgound="#2c3e50",bg="black",fg="white")
 
 	cbox=ttk.Combobox(signwin,textvariable=qft,width=15)
 	cbox['values']=('PG','UG','XII','X','Below X')
 	cbox.place(x=370,y=315)
 	cbox.current()
 	
-	Radiobutton(signwin,text="Male",relief=FLAT,activebackground="#121212",activeforeground="#c0c0c0",variable=gen,value="Male",bg="#121212",fg="#c0c0c0",selectcolor="black").place(x=370,y=365)
-	Radiobutton(signwin,text="Female",relief=FLAT,activebackground="#121212",activeforeground="#c0c0c0",variable=gen,value="Female",bg="#121212",fg="#c0c0c0",selectcolor='black').place(x=430,y=365)
+	Radiobutton(signwin,text="Male",relief=FLAT,activebackground="black",activeforeground="white",variable=gen,value="Male",bg="black",fg="white",selectcolor="black").place(x=370,y=365)
+	Radiobutton(signwin,text="Female",relief=FLAT,activebackground="black",activeforeground="white",variable=gen,value="Female",bg="black",fg="white",selectcolor='black').place(x=430,y=365)
 	
-	e5=Entry(signwin,textvariable=ar,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
+	e5=Entry(signwin,textvariable=ar,width=25,fg="white",bd=3,bg="black",insertbackground="white")
 	e5.place(x=370,y=415)
 	
-	Button(signwin,text="<back",fg="#c0c0c0",bg="#2c3e50",cursor="dot",activebackground="#121212",activeforeground="#c0c0c0",relief=FLAT,font=("Courier",13),command= lambda : back_log()).place(x=125,y=470)
+	Button(signwin,text="<back",fg="white",bg="#2c3e50",cursor="dot",activebackground="black",activeforeground="white",relief=FLAT,font=("Courier",13),command= lambda : back_log()).place(x=125,y=470)
 	global sing
 	global otbn
-	sing=Button(signwin,text="signup!",fg="#c0c0c0",bg="#2c3e50",cursor="dot",activebackground="#121212",activeforeground="#c0c0c0",relief=FLAT,state=DISABLED,font=("Courier",13),command= lambda :load_data(em.get(),ps.get(),un.get(),pn.get(),dt.get(),qft.get(),gen.get(),ar.get()))
+	sing=Button(signwin,text="signup!",fg="white",bg="#2c3e50",cursor="dot",activebackground="black",activeforeground="white",relief=FLAT,state=DISABLED,font=("Courier",13),command= lambda :load_data(em.get(),ps.get(),un.get(),pn.get(),dt.get(),qft.get(),gen.get(),ar.get()))
 	sing.place(x=360,y=470)
-	otbn=Button(signwin,text="click here to verify your account ",cursor="dot",fg="#3366CC",bg="#121212",activebackground="#121212",activeforeground="#3366CC",relief=FLAT,font=("Courier",13),command= lambda :open_otp(em.get(),ps.get(),un.get(),pn.get(),dt.get(),qft.get(),gen.get(),ar.get()))
+	otbn=Button(signwin,text="click here to verify your account ",cursor="dot",fg="#3366CC",bg="black",activebackground="black",activeforeground="#3366CC",relief=FLAT,font=("Courier",13),command= lambda :open_otp(em.get(),ps.get(),un.get(),pn.get(),dt.get(),qft.get(),gen.get(),ar.get()))
 	otbn.place(x=130,y=500)
 
 	#e1.bind('Tab',mov1)
@@ -377,8 +377,8 @@ def signup_open(o):
 		calwin=Tk()
 		calwin.title("Sign_up-form")
 		calwin.geometry("400x300")
-		calwin.configure(bg="#121212")
-		Label(calwin,text="Select the date and click the button",bg="#121212",fg="#c0c0c0",font=("inkfree",15,"underline")).pack(pady=10)
+		calwin.configure(bg="black")
+		Label(calwin,text="Select the date and click the button",bg="black",fg="white",font=("inkfree",15,"underline")).pack(pady=10)
 		cal = Calendar(calwin,selectmode='day',day=14,month=5,year=2003)
 		cal.pack(pady=10)
 		
@@ -386,10 +386,10 @@ def signup_open(o):
 			date=cal.get_date()
 			calwin.destroy()
 			clbt.destroy()
-			Entry(signwin,textvariable=dt,width=25,fg="#c0c0c0",bd=3,bg="#121212").place(x=370,y=265)
+			Entry(signwin,textvariable=dt,width=25,fg="white",bd=3,bg="black").place(x=370,y=265)
 			dt.set(date)
 
-		Button(calwin,text="click",fg="#c0c0c0",bg="#2c3e50",cursor="dot",activebackground="#121212",activeforeground="#c0c0c0",font=("Courier",13),relief=FLAT,command= lambda : select_date()).pack(pady=10)
+		Button(calwin,text="click",fg="white",bg="#2c3e50",cursor="dot",activebackground="black",activeforeground="white",font=("Courier",13),relief=FLAT,command= lambda : select_date()).pack(pady=10)
 
 
 def open_otp(*datas):
@@ -403,14 +403,14 @@ def open_otp(*datas):
 			otpwin=Toplevel()
 			otpwin.geometry("450x300")
 			otpwin.title("CRUD-OPERATION")
-			otpwin.configure(bg="#121212")
-			Label(otpwin,text="OTP has been sent to your mail-id",fg="#c0c0c0",bg="#1976a2",font=("mv boli",15,"bold")).pack(pady=10)
-			Label(otpwin,text="Enter OTP:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=50,y=70)
+			otpwin.configure(bg="black")
+			Label(otpwin,text="OTP has been sent to your mail-id",fg="white",bg="#1976a2",font=("mv boli",15,"bold")).pack(pady=10)
+			Label(otpwin,text="Enter OTP:",fg="white",bg="black",font=("Courier",15)).place(x=50,y=70)
 			otpr=StringVar()
-			Entry(otpwin,textvariable=otpr,width=15,bd=3,fg="#c0c0c0",bg="#121212").place(x=200,y=70)
-			Button(otpwin,text="check",fg="#c0c0c0",cursor="dot",bg="#2c3e50",relief=FLAT,font=("Courier",13),command= lambda :check_otp(otpr.get(),otps)).place(x=230,y=120)
-			Label(otpwin,text="Didn\'t recieve the otp..",fg="#c0c0c0",bg="#121212",font=("Courier",13)).place(x=30,y=170)
-			Button(otpwin,text="Resend",fg="#3366CC",cursor="dot",bg="#121212",relief=FLAT,font=("Courier",10),command= lambda :send_again()).place(x=270,y=170)
+			Entry(otpwin,textvariable=otpr,width=15,bd=3,fg="white",bg="black").place(x=200,y=70)
+			Button(otpwin,text="check",fg="white",cursor="dot",bg="#2c3e50",relief=FLAT,font=("Courier",13),command= lambda :check_otp(otpr.get(),otps)).place(x=230,y=120)
+			Label(otpwin,text="Didn\'t recieve the otp..",fg="white",bg="black",font=("Courier",13)).place(x=30,y=170)
+			Button(otpwin,text="Resend",fg="#3366CC",cursor="dot",bg="black",relief=FLAT,font=("Courier",10),command= lambda :send_again()).place(x=270,y=170)
 
 			def check_otp(otpr,otps):
 				if(otpr==otps):
@@ -431,21 +431,23 @@ def open_otp(*datas):
 logwin=Tk()
 logwin.title("Login-form")
 logwin.geometry("500x400")
-logwin.configure(bg="#121212")
+logwin.configure(bg="black")
 logwin.resizable(False,False)
 #logwin.call('tk','scaling',2.0)
-Label(logwin,text="Enter mail id:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=80)
-Label(logwin,text="Enter password:",fg="#c0c0c0",bg="#121212",font=("Courier",15)).place(x=90,y=130)
+Label(logwin,text="Enter mail id:",fg="white",bg="black",font=("Courier",15)).place(x=90,y=80)
+Label(logwin,text="Enter password:",fg="white",bg="black",font=("Courier",15)).place(x=90,y=130)
 
 
 em=StringVar()
 ps=StringVar()
 
 
-ement=Entry(logwin,textvariable=em,width=25,fg="#c0c0c0",bd=3,bg="#121212",insertbackground="white")
+ement=Entry(logwin,textvariable=em,width=25,fg="white",bd=3,bg="black",insertbackground="white")
 ement.place(x=280,y=83)
-pwd=Entry(logwin,textvariable=ps,width=25,fg="#c0c0c0",bd=3,bg="#121212",show="*",insertbackground="white")
+pwd=Entry(logwin,textvariable=ps,width=25,fg="white",bd=3,bg="black",show="*",insertbackground="white")
 pwd.place(x=280,y=130)
+#em.set("esakki")
+#ps.set("nathan")
 
 def clear_txt():
 	em.set("")
@@ -459,14 +461,14 @@ def pw_show():
 
 cbval=IntVar(value=0)
 checkb= Checkbutton(logwin,text='Show Password',variable=cbval,
-	onvalue=1,offvalue=0,fg="#b7c7d7",bg="#121212",font=("Courier",10),command=pw_show)
+	onvalue=1,offvalue=0,fg="#b7c7d7",bg="black",font=("Courier",10),command=pw_show)
 checkb.place(x=280,y=160)
 
 
-Label(logwin,text="Don\'t have an Account...",fg="#c0c0c0",bg="#121212",font=("Courier",13)).place(x=80,y=300)
-Button(logwin,text="login",fg="#c0c0c0",bg="#2c3e50",cursor="dot",activebackground="#121212",activeforeground="#c0c0c0",font=("Courier",10),relief=FLAT,command= lambda : ps_check(em.get(),ps.get())).place(x=130,y=200)
-reg=Button(logwin,text="Register",fg="#3366CC",bg="#121212",cursor="dot",activebackground="#121212",activeforeground="#3366CC",relief=FLAT,font=("Courier",10,"underline"),command= lambda : signup_open(1))
+Label(logwin,text="Don\'t have an Account...",fg="white",bg="black",font=("Courier",13)).place(x=80,y=300)
+Button(logwin,text="login",fg="white",bg="#2c3e50",cursor="dot",activebackground="black",activeforeground="white",font=("Courier",10),relief=FLAT,command= lambda : ps_check(em.get(),ps.get())).place(x=130,y=200)
+reg=Button(logwin,text="Register",fg="#3366CC",bg="black",cursor="dot",activebackground="black",activeforeground="#3366CC",relief=FLAT,font=("Courier",10,"underline"),command= lambda : signup_open(1))
 reg.place(x=315,y=300)
-Button(logwin,text="clear",fg="#c0c0c0",bg="#2c3e50",cursor="dot",activebackground="#121212",activeforeground="#c0c0c0",font=("Courier",10),relief=FLAT,command= lambda : clear_txt()).place(x=330,y=200)
+Button(logwin,text="clear",fg="white",bg="#2c3e50",cursor="dot",activebackground="black",activeforeground="white",font=("Courier",10),relief=FLAT,command= lambda : clear_txt()).place(x=330,y=200)
 
 logwin.mainloop()
