@@ -44,7 +44,6 @@ def send_otp(datas):
 	mypass=""
 	for i in a:
 		mypass+=chr(i)
-	print(mypass)
 	dum=[101, 115, 97, 107, 107, 105, 98, 101, 115, 57, 49, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109]
 	mail=""
 	for k in dum:
@@ -57,7 +56,7 @@ def send_otp(datas):
 	text=f"""
 	Hi there,
 	Its\' nice to see you are using my code\n
-	Please verify the below details mentioned by:\n
+	Please verify the below details mentioned:\n
 	Username:{datas[2]}
 	Mobile Number:{datas[3]}
 	Date.Of.Birth:{datas[4]}
