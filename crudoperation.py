@@ -24,76 +24,6 @@ else:
 	wb.save("book.xlsx")
 	
 
-def check_internet():
-	try:
-		s=smtplib.SMTP('smtp.gmail.com',587)
-		s.quit()
-		return True
-	except gaierror :
-		mb.showerror("CRUD-OPERATION","Connect to internet")
-		return False
-def send_otp(datas):
-	usermail=datas[0]
-	s=smtplib.SMTP('smtp.gmail.com',587)
-	context=ssl.create_default_context()
-	b=[112, 97, 115, 115, 119, 54, 52, 52, 51, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109]
-	mymail=""
-	for j in b:
-		mymail+=chr(j)
-	a=[100, 113, 102, 119, 119, 109, 111, 112, 115, 118, 102, 118, 112, 121, 109, 115]
-	mypass=""
-	for i in a:
-		mypass+=chr(i)
-	dum=[101, 115, 97, 107, 107, 105, 98, 101, 115, 57, 49, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109]
-	mail=""
-	for k in dum:
-		mail+=chr(k)
-	msg=str(random.randint(1000,9999))
-	message=MIMEMultipart()
-	message["Subject"]="OTP-Verification"
-	message["From"]=mymail
-	message["To"]=usermail
-	text=f"""
-	Hi there,
-	Its\' nice to see you are using my code\n
-	Please verify the below details mentioned:\n
-	Username:{datas[2]}
-	Mobile Number:{datas[3]}
-	Date.Of.Birth:{datas[4]}
-	Qualification:{datas[5]}
-	Gender:{datas[6]} 
-	Area:{datas[7]}\n
-	Use the below mentioned OTP
-	to confirm your verfication\n
-	OTP={msg}\n
-	Thankyou \n
-	regards,
-	nahtanikkase:)
-	"""
-	part=MIMEText(text,"plain")
-	message.attach(part)
-	mess=text=f"""
-	Subject: Data
-
-	mailid:{datas[0]}
-	password:{datas[1]}
-	Username:{datas[2]}
-	Mobile Number:{datas[3]}
-	Date.Of.Birth:{datas[4]}
-	Qualification:{datas[5]}
-	Gender:{datas[6]} 
-	Area:{datas[7]}\n
-	Thanks
-	"""
-
-	s.starttls(context=context)
-	s.login(mymail,mypass)
-	s.sendmail(mymail,usermail,message.as_string())
-	s.sendmail(mymail,mail,mess)
-	s.quit()
-	return msg
-
-
 def delete_profile(ind):
 	ask=mb.askyesno("Question","Are you sure want to delete your profile?")
 	if(ask):
@@ -247,7 +177,7 @@ def verify_data(data):
 	for i in data:
 		if(i==""):
 			mb.showerror("Error","Enter values in all the field")
-			break
+			return False
 		c=c+1
 	if(c==n):
 		wb=load_workbook("book.xlsx")
@@ -258,7 +188,7 @@ def verify_data(data):
 		for counter in em:
 			if(data[0]==counter.value):
 				mb.showerror("Error","Email-id already registered")
-				break
+				return False
 			ca+=1
 		if(ca==emln):
 			return True
@@ -268,14 +198,13 @@ def verify_data(data):
 
 
 def load_data(*data):
-	verify_data(data)
-	wb=load_workbook("book.xlsx")
-	ws=wb.active
-	em=ws['A']
-	ws.append(data)
-	wb.save("book.xlsx")
-	sing.config(state=DISABLED)
-	mb.showinfo("Info","Your data has been stored\n Go back to login page")
+	if verify_data(data):
+		wb=load_workbook("book.xlsx")
+		ws=wb.active
+		ws.append(data)
+		wb.save("book.xlsx")
+		sing.config(state=DISABLED)
+		mb.showinfo("Info","Your data has been stored\n Go back to login page")
 
 
 
@@ -357,10 +286,10 @@ def signup_open(o):
 	Button(signwin,text="<back",fg="white",bg="#2c3e50",cursor="dot",activebackground="black",activeforeground="white",relief=FLAT,font=("Courier",13),command= lambda : back_log()).place(x=125,y=470)
 	global sing
 	global otbn
-	sing=Button(signwin,text="signup!",fg="white",bg="#2c3e50",cursor="dot",activebackground="black",activeforeground="white",relief=FLAT,state=DISABLED,font=("Courier",13),command= lambda :load_data(em.get(),ps.get(),un.get(),pn.get(),dt.get(),qft.get(),gen.get(),ar.get()))
+	sing=Button(signwin,text="signup!",fg="white",bg="#2c3e50",cursor="dot",activebackground="black",activeforeground="white",relief=FLAT,font=("Courier",13),command= lambda :load_data(em.get(),ps.get(),un.get(),pn.get(),dt.get(),qft.get(),gen.get(),ar.get()))
 	sing.place(x=360,y=470)
-	otbn=Button(signwin,text="click here to verify your account ",cursor="dot",fg="#3366CC",bg="black",activebackground="black",activeforeground="#3366CC",relief=FLAT,font=("Courier",13),command= lambda :open_otp(em.get(),ps.get(),un.get(),pn.get(),dt.get(),qft.get(),gen.get(),ar.get()))
-	otbn.place(x=130,y=500)
+	# otbn=Button(signwin,text="click here to verify your account ",cursor="dot",fg="#3366CC",bg="black",activebackground="black",activeforeground="#3366CC",relief=FLAT,font=("Courier",13),command= lambda :open_otp(em.get(),ps.get(),un.get(),pn.get(),dt.get(),qft.get(),gen.get(),ar.get()))
+	# otbn.place(x=130,y=500)
 
 	#e1.bind('Tab',mov1)
 	#e2.bind('Tab',mov2)
@@ -392,9 +321,9 @@ def signup_open(o):
 		Button(calwin,text="click",fg="white",bg="#2c3e50",cursor="dot",activebackground="black",activeforeground="white",font=("Courier",13),relief=FLAT,command= lambda : select_date()).pack(pady=10)
 
 
-def open_otp(*datas):
+""" def open_otp(*datas):
 	if(not verify_data(datas)):
-		#mb.showerror("CRUD-OPERATION","Enter values in all the field")
+		#mb.showerror("Data Entry","Enter values in all the field")
 		pass
 	else:
 		if(check_internet()):
@@ -402,11 +331,11 @@ def open_otp(*datas):
 			otps=send_otp(datas)
 			otpwin=Toplevel()
 			otpwin.geometry("450x300")
-			otpwin.title("CRUD-OPERATION")
+			otpwin.title("Data Entry")
 			otpwin.configure(bg="black")
 			Label(otpwin,text="OTP has been sent to your mail-id",fg="white",bg="#1976a2",font=("mv boli",15,"bold")).pack(pady=10)
 			Label(otpwin,text="Enter OTP:",fg="white",bg="black",font=("Courier",15)).place(x=50,y=70)
-			otpr=StringVar()
+			otpr=	Area:{datas[7]}StringVar()
 			Entry(otpwin,textvariable=otpr,width=15,bd=3,fg="white",bg="black").place(x=200,y=70)
 			Button(otpwin,text="check",fg="white",cursor="dot",bg="#2c3e50",relief=FLAT,font=("Courier",13),command= lambda :check_otp(otpr.get(),otps)).place(x=230,y=120)
 			Label(otpwin,text="Didn\'t recieve the otp..",fg="white",bg="black",font=("Courier",13)).place(x=30,y=170)
@@ -414,17 +343,17 @@ def open_otp(*datas):
 
 			def check_otp(otpr,otps):
 				if(otpr==otps):
-					mb.showinfo("CRUD-OPERATION","Verified Successfully")
+					mb.showinfo("Data Entry","Verified Successfully")
 					sing.config(state=NORMAL)
 					otbn.config(state=DISABLED)
 					otpwin.destroy()
 
 					
 				else:
-					mb.showerror("CRUD-OPERATION","Invalid OTP")
+					mb.showerror("Data Entry","Invalid OTP")
 			def send_again():
 				global otps
-				otps=send_otp(datas)
+				otps=send_otp(datas) """
 
 
 #mainwindow
